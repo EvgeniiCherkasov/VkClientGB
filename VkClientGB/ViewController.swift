@@ -27,11 +27,14 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     @IBAction func loginButtonPressed(_ sender: Any) {
         let login = loginInput.text!
+        
         // Получаем текст-пароль
         let password = passwordInput.text!
+        
         // Проверяем, верны ли они
         if login == "admin" && password == "1234" {
         print("успешная авторизация")
+            
         } else {
             // Initialize Alert Controller
             let alertController = UIAlertController(title: "Error",
