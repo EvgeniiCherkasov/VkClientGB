@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIAlertViewDelegate {
+class LoginFormController: UIViewController, UIAlertViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +15,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         // Присваиваем его UIScrollVIew
             scrollView?.addGestureRecognizer(hideKeyboardGesture)
+        
     }
     
 
@@ -26,30 +27,17 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var passwordInput: UITextField!
     
     @IBAction func loginButtonPressed(_ sender: Any) {
-        let login = loginInput.text!
         
-        // Получаем текст-пароль
+        let login = loginInput.text!
         let password = passwordInput.text!
         
         // Проверяем, верны ли они
-        if login == "admin" && password == "1234" {
+        if login == "" && password == "" {
         print("успешная авторизация")
             
         } else {
-            // Initialize Alert Controller
-            let alertController = UIAlertController(title: "Error",
-                                                    message: "Неверное имя или пароль.",
-                                                    preferredStyle: .alert)
-                 
-                // Initialize Actions
-            let yesAction = UIAlertAction(title: "Try again.", style: .default) { (action) -> Void in
-                print("неуспешная авторизация")
-                }
-                // Add Actions
-                alertController.addAction(yesAction)
-                // Present Alert Controller
-            self.present(alertController, animated: true, completion: nil)
-
+ 
+            callAllert(message: "Неверное имя или пароль.")
             self.shakeTextField(textField: passwordInput, numberOfShakes: 2, direction: 1, maxShakes: 3)
             
         }
@@ -90,6 +78,23 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @objc func hideKeyboard() {
         self.scrollView?.endEditing(true)
     }
+    
+    func callAllert(message: String){
+        let alertController = UIAlertController(title: "Error",
+                                                message: message,
+                                                preferredStyle: .alert)
+             
+            // Initialize Actions
+        let yesAction = UIAlertAction(title: "Try again.", style: .cancel) { (action) -> Void in
+            print("неуспешная авторизация")
+            }
+            // Add Actions
+            alertController.addAction(yesAction)
+            // Present Alert Controller
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
     
     // Функция дрожания
     func shakeTextField(textField: UITextField, numberOfShakes: Int, direction: CGFloat, maxShakes: Int) {
