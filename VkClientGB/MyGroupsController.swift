@@ -8,13 +8,13 @@
 import UIKit
 
 class MyGroupsController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-
-
+    
+    
 }
 
 extension MyGroupsController: UITableViewDelegate, UITableViewDataSource{
@@ -35,7 +35,7 @@ extension MyGroupsController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+        
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "")
         cell.textLabel?.text = "Тема №\(indexPath.section)"
         cell.detailTextLabel?.text = "Группа № \(indexPath.row)"

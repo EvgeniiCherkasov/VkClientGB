@@ -53,7 +53,7 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tYx-g3-JbZ"/>
-                                            <segue destination="ilz-tL-2r4" kind="show" identifier="afterLoginSegue" id="rXd-lx-xfJ"/>
+                                            <segue destination="ilz-tL-2r4" kind="show" identifier="moveToMainSegue" id="rXd-lx-xfJ"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="100" verticalHuggingPriority="251" text="VkAppGB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHT-Hx-58G">
@@ -150,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XIs-aS-hkD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3662" y="406"/>
+            <point key="canvasLocation" x="3660.8695652173915" y="405.80357142857139"/>
         </scene>
         <!--All Groups-->
         <scene sceneID="Tq7-Tw-Gbb">
@@ -221,7 +221,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Px-hg-k65"/>
-                        <color key="backgroundColor" red="1" green="0.93690367440027955" blue="0.77020625804195975" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Friends" id="Gtt-0e-i4U"/>
                 </viewController>

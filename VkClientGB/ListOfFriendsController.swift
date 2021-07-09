@@ -8,14 +8,12 @@
 import UIKit
 
 class ListOfFriendsController: UIViewController{
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
-
-
 }
 
 extension ListOfFriendsController: UITableViewDelegate, UITableViewDataSource{
@@ -36,7 +34,7 @@ extension ListOfFriendsController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
+        
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "")
         cell.textLabel?.text = "City №: \(indexPath.section)"
         cell.detailTextLabel?.text = "Friend №\(indexPath.row)"
