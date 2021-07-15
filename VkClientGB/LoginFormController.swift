@@ -37,7 +37,7 @@ class LoginFormController: UIViewController, UIAlertViewDelegate {
             let login = loginInput.text!
             let password = passwordInput.text!
             
-            if login == "1" && password == "1" {
+            if login == "" && password == "" {
                 print("успешная авторизация")
                 return true
             } else {

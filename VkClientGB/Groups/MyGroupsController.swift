@@ -9,8 +9,13 @@ import UIKit
 
 class MyGroupsController: UIViewController {
     
+    var groups: [GroupModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        let storage = GroupStorage()
+        groups = storage.listOfGroups
         
     }
     
@@ -20,27 +25,22 @@ class MyGroupsController: UIViewController {
 extension MyGroupsController: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+       1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section{
-        case 0:
-            return 1;
-        case 1:
-            return 2;
-        default:
-            return 4
-        }
+        groups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "")
-        cell.textLabel?.text = "Тема №\(indexPath.section)"
-        cell.detailTextLabel?.text = "Группа № \(indexPath.row)"
-        
-        return cell
+        guard
+         let cell = tableView.dequeueReusableCell(withIdentifier: GroupTableViewCell.reusedIdentifier, for: indexPath) as? GroupTableViewCell
+        else {
+             return UITableViewCell()
+        }
+         let group = groups[indexPath.row]
+         cell.configure(group: group)
+         return cell
     }
     
 }

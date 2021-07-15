@@ -9,9 +9,13 @@ import UIKit
 
 class ListOfFriendsController: UIViewController{
     
+    var friends: [FriendModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let storage = FriendStorage()
+        friends = storage.listOfFriends
     }
     
 }
@@ -19,30 +23,25 @@ class ListOfFriendsController: UIViewController{
 extension ListOfFriendsController: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section{
-        case 0:
-            return 1;
-        case 1:
-            return 2;
-        default:
-            return 3
-        }
+        friends.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "")
-        cell.textLabel?.text = "City №: \(indexPath.section)"
-        cell.detailTextLabel?.text = "Friend №\(indexPath.row)"
-        
+       guard
+        let cell = tableView.dequeueReusableCell(withIdentifier: FriendTableViewCell.reusedIdentifier, for: indexPath) as? FriendTableViewCell
+       else {
+            return UITableViewCell()
+       }
+        let friend = friends[indexPath.row]
+        cell.configure(friend: friend)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "moveToFriendPhoto", sender: nil)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        performSegue(withIdentifier: "moveToFriendPhoto", sender: nil)
+//    }
 }
